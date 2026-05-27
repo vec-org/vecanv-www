@@ -1,0 +1,272 @@
+/* Vecanv landing — dark, calm, orb-forward */
+
+:root {
+  --bg: #0a0a0c;
+  --bg-soft: #131418;
+  --bg-card: #16171c;
+  --line: rgba(255, 255, 255, 0.08);
+  --line-soft: rgba(255, 255, 255, 0.04);
+  --fg: rgba(255, 255, 255, 0.92);
+  --fg-dim: rgba(255, 255, 255, 0.58);
+  --fg-muted: rgba(255, 255, 255, 0.38);
+  --accent: #b6d4ff;
+  --accent-hi: #e8f0ff;
+  --accent-glow: rgba(123, 168, 255, 0.45);
+  --radius: 14px;
+  --radius-lg: 22px;
+  --pulse-duration: 6s;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter",
+               "Segoe UI", Helvetica, Arial, sans-serif;
+  font-feature-settings: "ss01", "ss02";
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  min-height: 100vh;
+  background: radial-gradient(circle at 50% 0%,
+                              rgba(123, 168, 255, 0.10) 0%,
+                              transparent 50%),
+              var(--bg);
+}
+
+.page {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 80px 28px 64px;
+}
+
+/* ── Hero ─────────────────────────────────────────────────────── */
+
+.hero {
+  text-align: center;
+  padding: 24px 0 88px;
+}
+
+.orb-wrap {
+  position: relative;
+  width: 188px;
+  height: 188px;
+  margin: 0 auto 36px;
+}
+
+.orb {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  z-index: 2;
+  animation: breathe var(--pulse-duration) ease-in-out infinite;
+}
+
+.orb-glow {
+  position: absolute;
+  inset: -28px;
+  border-radius: 50%;
+  background: radial-gradient(circle at center,
+                              var(--accent-glow) 0%,
+                              transparent 70%);
+  filter: blur(20px);
+  z-index: 1;
+  animation: pulse var(--pulse-duration) ease-in-out infinite;
+}
+
+@keyframes breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.035); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.55; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.08); }
+}
+
+.wordmark {
+  font-size: 64px;
+  font-weight: 600;
+  letter-spacing: -1.5px;
+  margin: 0 0 14px;
+  background: linear-gradient(180deg, var(--accent-hi) 0%, var(--fg) 80%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.tagline {
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--fg);
+  margin: 0 auto 28px;
+  max-width: 32ch;
+  line-height: 1.4;
+}
+
+.lede {
+  font-size: 16px;
+  color: var(--fg-dim);
+  line-height: 1.65;
+  max-width: 56ch;
+  margin: 0 auto 36px;
+}
+
+.actions { margin-top: 28px; }
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 16px;
+  border-radius: 999px;
+  background: rgba(123, 168, 255, 0.10);
+  border: 1px solid rgba(123, 168, 255, 0.22);
+  color: var(--accent-hi);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+}
+
+.status-pill .dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent-hi);
+  box-shadow: 0 0 8px var(--accent-glow);
+  animation: blink 2.4s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* ── Cards ────────────────────────────────────────────────────── */
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 88px;
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: var(--accent-hi);
+}
+
+.card h2 {
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+  margin: 0;
+  color: var(--fg);
+}
+
+.card p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--fg-dim);
+  margin: 0;
+}
+
+/* ── Manifesto ────────────────────────────────────────────────── */
+
+.manifesto {
+  text-align: center;
+  padding: 56px 24px;
+  border-top: 1px solid var(--line-soft);
+  border-bottom: 1px solid var(--line-soft);
+  margin-bottom: 64px;
+}
+
+.manifesto h2 {
+  font-size: 28px;
+  font-weight: 500;
+  letter-spacing: -0.6px;
+  margin: 0 0 18px;
+  color: var(--fg);
+}
+
+.manifesto p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--fg-dim);
+  max-width: 58ch;
+  margin: 0 auto;
+}
+
+/* ── Footer ───────────────────────────────────────────────────── */
+
+.foot {
+  text-align: center;
+  padding-top: 32px;
+}
+
+.foot-links {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  margin-bottom: 18px;
+}
+
+.foot-links a {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--fg-dim);
+  text-decoration: none;
+  letter-spacing: 0.2px;
+  transition: color 0.15s ease;
+}
+
+.foot-links a:hover { color: var(--accent-hi); }
+
+.foot-meta {
+  font-size: 12px;
+  color: var(--fg-muted);
+  margin: 0;
+}
+
+/* ── Mobile ───────────────────────────────────────────────────── */
+
+@media (max-width: 720px) {
+  .page { padding: 56px 22px 48px; }
+  .hero { padding-bottom: 56px; }
+  .orb-wrap { width: 150px; height: 150px; }
+  .wordmark { font-size: 48px; }
+  .tagline { font-size: 19px; }
+  .lede { font-size: 15px; }
+  .cards {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 56px;
+  }
+  .manifesto h2 { font-size: 24px; }
+  .manifesto p { font-size: 14px; }
+  .foot-links { gap: 22px; }
+}
+
+/* Respect reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .orb, .orb-glow, .status-pill .dot { animation: none; }
+}
